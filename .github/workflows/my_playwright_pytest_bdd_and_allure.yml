@@ -42,7 +42,7 @@ jobs:
     - name: Run your tests
       run: pytest --log-format=%(asctime)s %(levelname)s %(message)s --log-date-format=%Y-%m-%dT%H:%M:%S %z --log-cli-level=INFO --base-url=${{ github.event.inputs.base_url }} -xsv --alluredir=allure-results --clean-alluredir --screenshot=only-on-failure --tracing=retain-on-failure
     - name: Run Allure Action
-      uses: allure-framework/allure-action
+      uses: allure-framework/allure-action@v0
       with:
         report-directory: "./allure-report"
         github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -20,6 +20,10 @@ on:
         default: 'https://development.integrationsuite.cfapps.us21.hana.ondemand.com/'
         required: true
 
+permissions:
+  pull-requests: write
+  checks: write
+
 jobs:
   test-and-build-report:
     runs-on: ubuntu-latest

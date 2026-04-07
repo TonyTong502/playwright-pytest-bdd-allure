@@ -20,9 +20,9 @@ on:
         default: 'https://development.integrationsuite.cfapps.us21.hana.ondemand.com/'
         required: true
 
-permissions:
-  pull-requests: write
-  checks: write
+# permissions:
+#   pull-requests: write
+#   checks: write
 
 jobs:
   test-and-build-report:
@@ -41,14 +41,21 @@ jobs:
       run: python -m playwright install chromium --with-deps --only-shell
     - name: Run your tests
       run: pytest --log-format="%(asctime)s %(levelname)s %(message)s" --log-date-format="%Y-%m-%dT%H:%M:%S %z" --log-cli-level=INFO --base-url=${{ github.event.inputs.base_url }} -xsv --alluredir=allure-results --clean-alluredir --screenshot=only-on-failure --tracing=retain-on-failure
-    - name: Run Allure Action
-      uses: allure-framework/allure-action@v0
-      with:
-        report-directory: "./allure-report"
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-    - uses: actions/upload-artifact@v4
+    # - name: Run Allure Action
+    #   uses: allure-framework/allure-action@v0
+    #   with:
+    #     report-directory: "./allure-report"
+    #     github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: generate allure report
+      run: allure generate
+    - uses: actions/upload-artifact@v5
       if: ${{ !cancelled() }}
       with:
         name: playwright-traces
         path: test-results/
-
+    - uses: actions/upload-artifact@v5
+      with:
+        # Artifact name
+        name: allure-report
+        # A file, directory or wildcard pattern that describes what to upload
+        path: allure-report

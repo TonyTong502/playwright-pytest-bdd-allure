@@ -20,9 +20,11 @@ on:
         default: 'https://development.integrationsuite.cfapps.us21.hana.ondemand.com/'
         required: true
 
-# permissions:
-#   pull-requests: write
-#   checks: write
+permissions:
+  # pull-requests: write
+  # checks: write
+  pages: write
+  id-token: write
 
 jobs:
   test-and-build-report:
@@ -70,4 +72,4 @@ jobs:
         path: './allure-report'
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v4
+      uses: actions/deploy-pages@v5

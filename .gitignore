@@ -1,0 +1,6 @@
+__pycache__
+.pytest_cache
+.venv
+allure*/
+.cucumber-data.json
+*.zip

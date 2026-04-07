@@ -1,0 +1,10 @@
+{
+    "python.testing.pytestArgs": [
+        "-svx"
+        ,"--alluredir=allure-results"
+        ,"--clean-alluredir"
+        // ,"--full-trace"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}

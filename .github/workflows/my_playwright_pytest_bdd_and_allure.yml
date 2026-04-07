@@ -29,6 +29,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v5
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "20"
     - name: Set up Python
       uses: actions/setup-python@v6
       with:
@@ -47,7 +51,7 @@ jobs:
     #     report-directory: "./allure-report"
     #     github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: generate allure report
-      run: allure generate
+      run: npx allure generate
     - uses: actions/upload-artifact@v5
       if: ${{ !cancelled() }}
       with:

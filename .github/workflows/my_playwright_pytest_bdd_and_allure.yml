@@ -1,0 +1,50 @@
+name: Playwright Pytest BDD and Allure
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'username to log in target cpi tenant, e.g.: tony.tong@interpublic.com'
+        default: 'tony.tong@interpublic.com'
+        required: true
+      password:
+        description: 'password to log in target cpi tenant'
+        default: '<your password>'
+        required: true
+      otp:
+        description: 'one-time-passcode to log in target cpi tenant, e.g.: 123456'
+        default: '<your one-time-passcode>'
+        required: true
+      base_url:
+        description: 'base url of target cpi tenant, e.g.: https://development.integrationsuite.cfapps.us21.hana.ondemand.com/'
+        default: 'https://development.integrationsuite.cfapps.us21.hana.ondemand.com/'
+        required: true
+
+jobs:
+  test-and-build-report:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.13'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Ensure browsers are installed
+      run: python -m playwright install chromium --with-deps --only-shell
+    - name: Run your tests
+      run: pytest --log-format=%(asctime)s %(levelname)s %(message)s --log-date-format=%Y-%m-%dT%H:%M:%S %z --log-cli-level=INFO --base-url=${{ github.event.inputs.base_url }} -xsv --alluredir=allure-results --clean-alluredir --screenshot=only-on-failure --tracing=retain-on-failure
+    - name: Run Allure Action
+      uses: allure-framework/allure-report@v0
+      with:
+        report-directory: "./allure-report"
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: playwright-traces
+        path: test-results/
+

@@ -1,0 +1,30 @@
+2026-04-01T14:29:10 +0800 INFO Pre-processed file name: APAC_PH_PLC_Auto_Testing_20260401_1429, file content: hello, this is a test message from automated testing 20260401_1429,
+2026-04-01T14:29:16 +0800 INFO Setting up browser context with authentication
+2026-04-01T14:29:16 +0800 INFO auth.json already exists, using it for authentication
+2026-04-01T14:29:16 +0800 INFO make sure CITI_APAC_Payment_PH_PLC_locked value is false or not existed
+2026-04-01T14:30:16 +0800 INFO CITI_APAC_Payment_PH_PLC_locked is already false, no need to delete
+2026-04-01T14:30:16 +0800 INFO make sure no data store existed with prefix: DS_CITI_APAC_Payment_PH_PLC
+2026-04-01T14:30:30 +0800 INFO no data found with prefix: DS_CITI_APAC_Payment_PH_PLC
+2026-04-01T14:30:30 +0800 INFO make sure integration flow IPG_EAI_Routing_Vantage_CITI_APAC_Payment_Receiver is deployed
+2026-04-01T14:31:00 +0800 INFO Integration flow IPG_EAI_Routing_Vantage_CITI_APAC_Payment_Receiver is not deployed, going to deploy it
+2026-04-01T14:31:37 +0800 INFO Integration flow IPG_EAI_Routing_Vantage_CITI_APAC_Payment_Receiver deployed and started successfully
+2026-04-01T14:31:37 +0800 INFO make sure integration flow IPG_EAI_Routing_Vantage_CITI_APAC_Payment_Timer is deployed
+2026-04-01T14:31:56 +0800 INFO Integration flow IPG_EAI_Routing_Vantage_CITI_APAC_Payment_Timer is not deployed, going to deploy it
+2026-04-01T14:32:28 +0800 INFO Integration flow IPG_EAI_Routing_Vantage_CITI_APAC_Payment_Timer deployed and started successfully
+2026-04-01T14:32:28 +0800 INFO make sure integration flow IPG_EAI_Routing_Vantage_CITI_APAC_Payment_PH_Sender is deployed
+2026-04-01T14:32:45 +0800 INFO Integration flow IPG_EAI_Routing_Vantage_CITI_APAC_Payment_PH_Sender is not deployed, going to deploy it
+2026-04-01T14:33:15 +0800 INFO Integration flow IPG_EAI_Routing_Vantage_CITI_APAC_Payment_PH_Sender deployed and started successfully
+2026-04-01T14:33:15 +0800 INFO make sure integration flow IPG_EAI_Routing_Vantage_CITI_APAC_Payment_Receiver logging level is Trace
+2026-04-01T14:33:57 +0800 INFO Integration flow IPG_EAI_Routing_Vantage_CITI_APAC_Payment_Receiver log level is set to Trace
+2026-04-01T14:33:57 +0800 INFO Starting to send file to SFTP, name: APAC_PH_PLC_Auto_Testing_20260401_1429 and content: hello, this is a test message from automated testing 20260401_1429,
+2026-04-01T14:34:03 +0800 INFO File APAC_PH_PLC_Auto_Testing_20260401_1429 with content hello, this is a test message from automated testing 20260401_1429, sent to SFTP server successfully
+2026-04-01T14:34:03 +0800 INFO Sftp address: ipgvh.sftp-nfs-dev2.internal:22, path: RD1/Outbound/PHCITI/PLC, proxy type: onPremise, credential name: IPG_SFTP_INTERNAL_SHRD_VTG_NFS_RD1_V2
+2026-04-01T14:34:03 +0800 INFO Validating message processing log count by custom header: FileName with file name: APAC_PH_PLC_Auto_Testing_20260401_1429 should be 3
+2026-04-01T14:34:03 +0800 INFO Validate message processing logs, expect 3 messages
+2026-04-01T14:36:18 +0800 INFO Messages' count equals 3
+2026-04-01T14:36:18 +0800 INFO custom header FileName=APAC_PH_PLC_Auto_Testing_20260401_1429 expected
+2026-04-01T14:36:18 +0800 INFO Validating message processing log trace of integration flow: IPG_EAI_Routing_Vantage_CITI_APAC_Payment_Receiver for given file name: APAC_PH_PLC_Auto_Testing_20260401_1429 should have an activity: CallActivity_99564594, and its text should equals to given file content: hello, this is a test message from automated testing 20260401_1429,
+2026-04-01T14:37:09 +0800 INFO Message content hello, this is a test message from automated testing 20260401_1429, in trace matches expected file content
+2026-04-01T14:37:41 +0800 INFO Start to undeploy and delete artifact IPG_EAI_Routing_Vantage_CITI_APAC_Payment_Receiver
+2026-04-01T14:38:32 +0800 INFO Start to undeploy and delete artifact IPG_EAI_Routing_Vantage_CITI_APAC_Payment_Timer
+2026-04-01T14:40:33 +0800 INFO Start to undeploy and delete artifact IPG_EAI_Routing_Vantage_CITI_APAC_Payment_PH_Sender
